@@ -1,0 +1,18 @@
+Metric,Value
+Model Name,D3Net + ImageNet + Attention
+Backbone,EfficientNetB0 (ImageNet Pretrained)
+Attention Mechanism,Channel-wise (SE-like)
+Input Image Size,224 × 224 × 3
+Optimizer,AdamW
+Learning Rates,1e-4 → 1e-5 (Fine-tuning)
+Total Parameters,"8,199,590"
+Training Accuracy (%),99.67
+Validation Accuracy (%),97.33
+Test Accuracy (%),97.00
+Macro Precision,0.971
+Macro Recall,0.970
+Macro F1-Score,0.970
+Weighted F1-Score,0.970
+Dataset,Balanced Lung Disease Dataset
+No. of Classes,3
+Evaluation Protocol,Train / Val / Test Split (Unseen Data)
