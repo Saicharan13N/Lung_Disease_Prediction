@@ -11,7 +11,7 @@ from fpdf import FPDF
 st.set_page_config(
     page_title="Lung Disease Prediction System",
     page_icon="🫁",
-    layout="wide",
+    layout="centered",  # Changed from "wide" for better mobile compatibility
     initial_sidebar_state="expanded",
     menu_items={
         'Get Help': 'https://github.com/your-repo',
@@ -299,6 +299,61 @@ st.markdown("""
         background: var(--accent-color);
         color: white;
     }
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .main-header {
+            padding: 15px;
+        }
+        .main-title {
+            font-size: 24px;
+        }
+        .card, .metric-card {
+            padding: 15px;
+            margin: 5px 0;
+        }
+        .metric-value {
+            font-size: 20px;
+        }
+        .stButton>button {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        .sidebar-content {
+            padding: 10px 5px;
+        }
+        .nav-button {
+            padding: 10px 12px;
+            font-size: 14px;
+        }
+        h1 { font-size: 24px; }
+        h2 { font-size: 20px; }
+        h3 { font-size: 18px; }
+        p { font-size: 14px; }
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            top: 10px;
+            right: 10px;
+        }
+    }
+    @media (max-width: 480px) {
+        .main-title {
+            font-size: 20px;
+        }
+        .metric-value {
+            font-size: 18px;
+        }
+        .card, .metric-card {
+            padding: 10px;
+        }
+        .stButton>button {
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+        h1 { font-size: 20px; }
+        h2 { font-size: 18px; }
+        h3 { font-size: 16px; }
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -556,7 +611,7 @@ if menu_option == "🏠 Home":
     
     with col2:
         st.image("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop", 
-                width=400)
+                use_container_width=True)
     
     st.markdown('<div class="section-divider"></div>', unsafe_allow_html=True)
     
@@ -598,13 +653,13 @@ if menu_option == "🏠 Home":
     
     col7, col8, col9 = st.columns(3)
     with col7:
-        st.image("https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=350&h=200&fit=crop")
+        st.image("https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=350&h=200&fit=crop", use_container_width=True)
         st.caption("Lung Health Monitoring")
     with col8:
-        st.image("https://images.unsplash.com/photo-1559757175-5700dde675bc?w=350&h=200&fit=crop")
+        st.image("https://images.unsplash.com/photo-1559757175-5700dde675bc?w=350&h=200&fit=crop", use_container_width=True)
         st.caption("Advanced Diagnostics")
     with col9:
-        st.image("https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=350&h=200&fit=crop")
+        st.image("https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=350&h=200&fit=crop", use_container_width=True)
         st.caption("Medical Technology")
 
 
@@ -623,7 +678,7 @@ elif menu_option == "🔬 Prediction":
         # Display image centered
         col_img = st.columns([1, 2, 1])[1]  # Center the image
         with col_img:
-            st.image(image_pil, width=600, use_container_width=True)
+            st.image(image_pil, use_container_width=True)
 
         # Image metadata
         col_a, col_b = st.columns(2)
