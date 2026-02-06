@@ -1,4 +1,4 @@
-,Predicted Bacterial Pneumonia,Predicted Normal,Predicted Tuberculosis
-True Bacterial Pneumonia,94.0,6.0,0.0
-True Normal,1.6666666666666667,98.33333333333333,0.0
-True Tuberculosis,0.0,1.3333333333333335,98.66666666666667
+,Pred_Bacterial Pneumonia,Pred_Normal,Pred_Tuberculosis
+True_Bacterial Pneumonia,90.33,9.67,0.0
+True_Normal,0.67,99.0,0.33
+True_Tuberculosis,0.0,0.33,99.67

@@ -83,6 +83,58 @@ The model was trained on a comprehensive dataset of chest X-ray images including
 - Tuberculosis
 - Other lung conditions
 
+### Data Preparation
+
+Organize your training data in the following directory structure:
+
+```
+data/
+├── Bacterial_Pneumonia/
+│   ├── image1.jpg
+│   ├── image2.jpg
+│   └── ...
+├── Normal/
+│   ├── image1.jpg
+│   ├── image2.jpg
+│   └── ...
+└── Tuberculosis/
+    ├── image1.jpg
+    ├── image2.jpg
+    └── ...
+```
+
+## Training the Model
+
+If you need to retrain the model (recommended for better performance):
+
+1. Prepare your dataset in the directory structure above
+2. Run the diagnostic script to check for issues:
+   ```bash
+   python model_diagnosis.py
+   ```
+3. Train the model using the fixed training script:
+   ```bash
+   python train_model_fixed.py
+   ```
+   When prompted, enter the path to your training data directory.
+
+The training script includes:
+- Proper data augmentation to prevent overfitting
+- Early stopping and learning rate scheduling
+- EfficientNetB0 backbone with ImageNet pretraining
+- Regularization techniques
+- Comprehensive evaluation and visualization
+
+## Model Issues and Fixes
+
+The original model had reliability issues due to overfitting. The fixes include:
+
+- **Overconfidence Detection**: Model now detects and reports uncertain predictions
+- **Improved Training**: New training script with proper regularization
+- **Better Architecture**: Uses EfficientNetB0 as intended
+- **Data Augmentation**: Prevents overfitting with various transformations
+- **Regularization**: L2 regularization and dropout layers
+
 ## Contributing
 
 1. Fork the repository

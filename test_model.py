@@ -23,6 +23,13 @@ def preprocess_image(img):
     img_array = np.expand_dims(img_array, axis=0)
     return img_array
 
+def calibrated_softmax(probs, T=1.5):
+    """Apply temperature scaling to calibrate probabilities"""
+    probs = np.clip(probs, 1e-7, 1.0)
+    log_p = np.log(probs)
+    scaled = np.exp(log_p / T)
+    return scaled / np.sum(scaled)
+
 def create_test_images():
     """Create synthetic test images for each class"""
     classes = ['Bacterial Pneumonia', 'Normal', 'Tuberculosis']
@@ -68,7 +75,7 @@ def test_model_predictions():
     try:
         # Load the model
         print("🔄 Loading model...")
-        model = load_model('d3net_deployment_safe.keras', safe_mode=False, compile=False)
+        model = load_model('model_final.keras', compile=False)
         print("✅ Model loaded successfully!")
 
         # Define class labels
@@ -92,14 +99,14 @@ def test_model_predictions():
                 predictions = model.predict(processed_img)
 
                 # Apply temperature scaling for calibration
-                calibrated_preds = calibrated_softmax(predictions[0], T=1.5)
+                calibrated_preds = calibrated_softmax(predictions[0], T=2.0)
                 predicted_class_idx = np.argmax(calibrated_preds)
                 confidence = float(calibrated_preds[predicted_class_idx] * 100)
                 predicted_class = CLASS_LABELS[predicted_class_idx]
 
-                # Threshold handling
-                UNCERTAIN_THRESHOLD = 0.75
-                HIGH_CONF_THRESHOLD = 0.90
+                # Threshold handling - updated for less conservative predictions
+                UNCERTAIN_THRESHOLD = 0.6
+                HIGH_CONF_THRESHOLD = 0.8
 
                 if confidence < UNCERTAIN_THRESHOLD:
                     final_label = "Uncertain"

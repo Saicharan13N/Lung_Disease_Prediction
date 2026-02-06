@@ -1,6 +1,14 @@
 # TODO List for UI Improvements
 
-## Metrics Dashboard Rearrangement
+## Model Reliability Fixes ✅ COMPLETED
+- [x] Diagnosed model overconfidence issues
+- [x] Added uncertainty detection for overconfident predictions
+- [x] Created fixed training script with proper regularization
+- [x] Added data augmentation and early stopping
+- [x] Updated model architecture to use EfficientNetB0
+- [x] Added user warnings about model reliability
+
+## UI Improvements
 - [x] Move all graphs/images to the top (training curves, confusion matrix, ROC curves, model architecture)
 - [x] Place training details text section below graphs
 - [x] Move confusion matrix table to the bottom
