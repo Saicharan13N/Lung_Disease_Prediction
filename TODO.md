@@ -1,36 +1,24 @@
-# TODO List for UI Improvements
+# Lung Disease Prediction App Updates - TODO
 
-## Model Reliability Fixes ✅ COMPLETED
-- [x] Diagnosed model overconfidence issues
-- [x] Added uncertainty detection for overconfident predictions
-- [x] Created fixed training script with proper regularization
-- [x] Added data augmentation and early stopping
-- [x] Updated model architecture to use EfficientNetB0
-- [x] Added user warnings about model reliability
+## Approved Plan Steps:
 
-## UI Improvements
-- [x] Move all graphs/images to the top (training curves, confusion matrix, ROC curves, model architecture)
-- [x] Place training details text section below graphs
-- [x] Move confusion matrix table to the bottom
+### 1. [✅] Remove "Training Curves 1" section from Metrics Dashboard
+- Locate tab1 in lung_disease_streamlit.py
+- Remove entire `with graph_col2:` block (Training Curves 1 image, info-box, except)
+- Adjust layout for single training_curves.png column
 
-## Prediction Section Optimization
-- [x] Limit causes, symptoms, precautions to 3-4 items each
-- [x] Remove risk level indicator (high/medium/low)
-- [x] Add prediction confidence meter/progress bar
+### 2. [✅] Add "Project Developed By" section to About page bottom
+- Insert after "Clinical Applications" markdown in About section
+- Use styled HTML/CSS matching app theme
+- Include college, guide, and 4 students names
+- Ensure responsive and good fonts
 
-## UI Clarity Improvements
-- [x] Use tabs for different dashboard sections
-- [x] Improve column layouts
-- [x] Add better section headers
+### 3. [✅] Test the application
+- Run `streamlit run lung_disease_streamlit.py`
+- Verify Dashboard: No Training Curves 1, clean layout
+- Verify About: New section at bottom with good styling
 
-## Testing
-- [x] Run Streamlit app to verify changes work correctly
+### 4. [✅] Clean up optional files
+- Optionally delete training_curves1.png if present (not in cwd)
 
-## Additional UI Improvements
-- [x] Elaborate model summary with detailed architecture, training config, and statistics
-
-## Suggested Features (Future)
-- [ ] Interactive metric charts
-- [ ] Export metrics to CSV/PDF
-- [ ] Collapsible sections
-- [ ] Dark mode toggle
+**Status:** All steps complete! 🎉 App updated successfully.

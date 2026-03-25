@@ -840,23 +840,12 @@ elif menu_option == "📊 Metrics Dashboard":
 
     with tab1:
         st.markdown("### 📈 Training Curves")
-        graph_col1, graph_col2 = st.columns(2)
-
-        with graph_col1:
-            st.markdown("#### Training Curves")
-            try:
-                st.image("training_curves.png")
-                st.markdown('<div class="info-box">Training accuracy and loss over 25 epochs showing consistent convergence and minimal overfitting.</div>', unsafe_allow_html=True)
-            except:
-                st.info("⚠️ Add training_curves.png to project folder")
-
-        with graph_col2:
-            st.markdown("#### Training Curves 1")
-            try:
-                st.image("training_curves1.png")
-                st.markdown('<div class="info-box">Additional training metrics and performance visualization.</div>', unsafe_allow_html=True)
-            except:
-                st.info("⚠️ Add training_curves1.png to project folder")
+        st.markdown("#### Training Curves")
+        try:
+            st.image("training_curves.png", width="stretch")
+            st.markdown('<div class="info-box">Training accuracy and loss over 25 epochs showing consistent convergence and minimal overfitting.</div>', unsafe_allow_html=True)
+        except:
+            st.info("⚠️ Add training_curves.png to project folder")
 
         st.markdown("### 📊 ROC Curves - Class-wise Performance")
         roc_col1, roc_col2, roc_col3 = st.columns(3)
@@ -1178,3 +1167,42 @@ elif menu_option == "📄 About":
     - Medical education and training
     - Uncertainty flagging for complex cases
     """)
+
+    st.markdown('<div class="section-divider"></div>', unsafe_allow_html=True)
+
+    # Project Developed By Section
+    st.markdown("""
+    <div style="
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #2c3e50;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        margin: 25px 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border: 1px solid #dee2e6;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    ">
+        <h2 style="margin: 0 0 20px 0; font-size: 28px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+            👨‍🎓 Project Developed By
+        </h2>
+        <div style="font-size: 18px; margin-bottom: 15px; opacity: 0.95;">
+            <strong>🏫 College:</strong> MLR Institute of Technology
+        </div>
+        <div style="font-size: 18px; margin-bottom: 20px; opacity: 0.95;">
+            <strong>👨‍‍➡️ Guide:</strong> Dr. Y. Sivarama Krishna
+        </div>
+        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 12px; backdrop-filter: blur(10px); max-width: 600px; margin: 0 auto;">
+            <h3 style="margin: 0 0 15px 0; font-size: 20px; color: #2c3e50;">
+                🎓 Students:
+            </h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.8;">
+                <li>N. Purvi Sakshi</li>
+                <li>N. Bharath Reddy</li>
+                <li>N. Sai Charan</li>
+                <li>S. Pravalika</li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)

@@ -1,5 +1,13 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+venv/
+env/
+.DS_Store
+.streamlit/secrets.toml
+*.pkl
+model_*.h5
+*.keras
+
 *.py[cod]
 *$py.class
 

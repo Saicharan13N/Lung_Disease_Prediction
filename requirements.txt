@@ -1,7 +1,8 @@
-streamlit
-tensorflow
-pillow
-numpy
-keras
-fpdf
-opencv-python
+streamlit==1.38.0
+tensorflow-cpu==2.15.0
+Pillow==10.4.0
+numpy==1.26.4
+Keras==3.4.1
+fpdf2==2.8.1
+opencv-python-headless==4.10.0.84
+pandas==2.2.2
