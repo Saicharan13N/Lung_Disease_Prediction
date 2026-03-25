@@ -605,7 +605,7 @@ with st.sidebar:
     menu_option = None
 
     for option in nav_options:
-st.button(option, key=f"nav_{option}", width='stretch',
+        if st.button(option, key=f"nav_{option}", width='stretch',
                     help=f"Navigate to {option.split(' ', 1)[1]}"):
             menu_option = option
 
@@ -641,7 +641,7 @@ if menu_option == "🏠 Home":
         """)
     
     with col2:
-st.image("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop", width='stretch')
+        st.image("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop", width='stretch')
     
     st.markdown('<div class="section-divider"></div>', unsafe_allow_html=True)
     
@@ -683,10 +683,10 @@ st.image("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=2
     
     col7, col8, col9 = st.columns(3)
     with col7:
-st.image("https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=350&h=200&fit=crop", width='stretch')
+        st.image("https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=350&h=200&fit=crop", width='stretch')
         st.caption("Lung Health Monitoring")
     with col8:
-st.image("https://images.unsplash.com/photo-1559757175-5700dde675bc?w=350&h=200&fit=crop", width='stretch')
+        st.image("https://images.unsplash.com/photo-1559757175-5700dde675bc?w=350&h=200&fit=crop", width='stretch')
         st.caption("Advanced Diagnostics")
     with col9:
 st.image("https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=350&h=200&fit=crop", width='stretch')
