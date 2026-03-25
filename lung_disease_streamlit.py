@@ -605,7 +605,7 @@ with st.sidebar:
     menu_option = None
 
     for option in nav_options:
-        if st.button(option, key=f"nav_{option}", use_container_width=True,
+st.button(option, key=f"nav_{option}", width='stretch',
                     help=f"Navigate to {option.split(' ', 1)[1]}"):
             menu_option = option
 
@@ -641,8 +641,7 @@ if menu_option == "🏠 Home":
         """)
     
     with col2:
-        st.image("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop", 
-                use_container_width=True)
+st.image("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop", width='stretch')
     
     st.markdown('<div class="section-divider"></div>', unsafe_allow_html=True)
     
@@ -684,13 +683,13 @@ if menu_option == "🏠 Home":
     
     col7, col8, col9 = st.columns(3)
     with col7:
-        st.image("https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=350&h=200&fit=crop", use_container_width=True)
+st.image("https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=350&h=200&fit=crop", width='stretch')
         st.caption("Lung Health Monitoring")
     with col8:
-        st.image("https://images.unsplash.com/photo-1559757175-5700dde675bc?w=350&h=200&fit=crop", use_container_width=True)
+st.image("https://images.unsplash.com/photo-1559757175-5700dde675bc?w=350&h=200&fit=crop", width='stretch')
         st.caption("Advanced Diagnostics")
     with col9:
-        st.image("https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=350&h=200&fit=crop", use_container_width=True)
+st.image("https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=350&h=200&fit=crop", width='stretch')
         st.caption("Medical Technology")
 
 
@@ -712,7 +711,7 @@ elif menu_option == "🔬 Prediction":
         # Display image centered
         col_img = st.columns([1, 2, 1])[1]  # Center the image
         with col_img:
-            st.image(image_pil, use_container_width=True)
+st.image(image_pil, width='stretch')
 
         # Image metadata
         col_a, col_b = st.columns(2)
@@ -722,7 +721,7 @@ elif menu_option == "🔬 Prediction":
             st.metric("Dimensions", f"{image_pil.size[0]}x{image_pil.size[1]}")
 
         # Analyze button
-        if st.button("🚀 Analyze Image", type="primary", use_container_width=True):
+st.button("🚀 Analyze Image", type="primary", width='stretch'):
             with st.spinner("Analyzing..."):
                 final_label, confidence, risk, original = predict_disease(image_pil)
 
@@ -799,12 +798,12 @@ elif menu_option == "🔬 Prediction":
 
         # Download PDF Report
         pdf_data = generate_pdf_report(result)
-        st.download_button(
+st.download_button(
             "📥 Download PDF Report",
             pdf_data,
             file_name=f"lung_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf",
             mime="application/pdf",
-            use_container_width=True
+            width='stretch'
         )
 
 # METRICS DASHBOARD
@@ -1013,7 +1012,7 @@ elif menu_option == "📊 Metrics Dashboard":
             ])
 
         styled_df = style_table(model_df)
-        st.dataframe(styled_df, use_container_width=True, height=400)
+st.dataframe(styled_df, width='stretch', height=400)
 
     with tab3:
         st.markdown("### 📉 Confusion Matrix Details")
