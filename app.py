@@ -711,7 +711,7 @@ elif menu_option == "🔬 Prediction":
         # Display image centered
         col_img = st.columns([1, 2, 1])[1]  # Center the image
         with col_img:
-st.image(image_pil, width='stretch')
+            st.image(image_pil, width='stretch')
 
         # Image metadata
         col_a, col_b = st.columns(2)
@@ -721,7 +721,7 @@ st.image(image_pil, width='stretch')
             st.metric("Dimensions", f"{image_pil.size[0]}x{image_pil.size[1]}")
 
         # Analyze button
-st.button("🚀 Analyze Image", type="primary", width='stretch'):
+        if st.button("🚀 Analyze Image", type="primary", width='stretch'):
             with st.spinner("Analyzing..."):
                 final_label, confidence, risk, original = predict_disease(image_pil)
 
@@ -798,7 +798,7 @@ st.button("🚀 Analyze Image", type="primary", width='stretch'):
 
         # Download PDF Report
         pdf_data = generate_pdf_report(result)
-st.download_button(
+        st.download_button(
             "📥 Download PDF Report",
             pdf_data,
             file_name=f"lung_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf",
@@ -1012,7 +1012,7 @@ elif menu_option == "📊 Metrics Dashboard":
             ])
 
         styled_df = style_table(model_df)
-st.dataframe(styled_df, width='stretch', height=400)
+        st.dataframe(styled_df, width='stretch', height=400)
 
     with tab3:
         st.markdown("### 📉 Confusion Matrix Details")
