@@ -1,1 +1,4 @@
-﻿[server]\nheadless = true\n[global]\npython_version = " 3.13\
+[server]
+headless = true
+[global]
+python_version = 3.13
