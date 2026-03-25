@@ -689,7 +689,7 @@ if menu_option == "🏠 Home":
         st.image("https://images.unsplash.com/photo-1559757175-5700dde675bc?w=350&h=200&fit=crop", width='stretch')
         st.caption("Advanced Diagnostics")
     with col9:
-st.image("https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=350&h=200&fit=crop", width='stretch')
+        st.image("https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=350&h=200&fit=crop", width='stretch')
         st.caption("Medical Technology")
 
 
