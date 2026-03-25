@@ -5,7 +5,6 @@ import io
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
-from fpdf import FPDF
 
 # Page configuration
 st.set_page_config(
@@ -446,54 +445,6 @@ def predict_disease(img):
         st.error(f"Prediction error: {e}")
         return None, None, None, None
 
-# Generate PDF report
-def generate_pdf_report(result):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", "B", 16)
-    pdf.cell(0, 10, "LUNG DISEASE PREDICTION REPORT", ln=1, align='C')
-    pdf.ln(5)
-
-    pdf.set_font("Arial", "", 11)
-    pdf.cell(0, 8, f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", ln=1)
-    pdf.ln(3)
-
-    # Prediction Results
-    pdf.set_font("Arial", "B", 12)
-    pdf.cell(0, 8, "PREDICTION RESULTS", ln=1)
-    pdf.set_font("Arial", "", 10)
-    pdf.cell(0, 6, f"Prediction: {result['final_label']}", ln=1)
-    pdf.cell(0, 6, f"Confidence: {result['confidence']}%", ln=1)
-    pdf.cell(0, 6, f"Risk Level: {result['risk_level']}", ln=1)
-
-    if result['final_label'] != "Uncertain":
-        pdf.ln(5)
-        info = disease_info.get(result['original_disease'], disease_info['Normal'])
-
-        pdf.set_font("Arial", "B", 11)
-        pdf.cell(0, 6, "Causes:", ln=1)
-        pdf.set_font("Arial", "", 9)
-        for cause in info['causes']:
-            pdf.multi_cell(0, 5, f"  - {cause}")
-
-        pdf.set_font("Arial", "B", 11)
-        pdf.cell(0, 6, "Symptoms:", ln=1)
-        pdf.set_font("Arial", "", 9)
-        for symptom in info['symptoms']:
-            pdf.multi_cell(0, 5, f"  - {symptom}")
-
-        pdf.set_font("Arial", "B", 11)
-        pdf.cell(0, 6, "Precautions:", ln=1)
-        pdf.set_font("Arial", "", 9)
-        for precaution in info['precautions']:
-            pdf.multi_cell(0, 5, f"  - {precaution}")
-
-    pdf.ln(5)
-    pdf.set_font("Arial", "I", 9)
-    pdf.multi_cell(0, 5, "Disclaimer: This is an AI-based prediction tool. Always consult a qualified healthcare professional for proper diagnosis and treatment.")
-
-    return pdf.output(dest="S").encode("latin-1")
-
 disease_info = {
     "Normal": {
         "risk_level": "Low",
@@ -795,16 +746,6 @@ elif menu_option == "🔬 Prediction":
             st.markdown(f"{i}. {precaution}")
 
         st.markdown('<div class="info-box">⚠️ <b>Disclaimer:</b> AI prediction tool. Consult healthcare professional for diagnosis.</div>', unsafe_allow_html=True)
-
-        # Download PDF Report
-        pdf_data = generate_pdf_report(result)
-        st.download_button(
-            "📥 Download PDF Report",
-            pdf_data,
-            file_name=f"lung_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf",
-            mime="application/pdf",
-            width='stretch'
-        )
 
 # METRICS DASHBOARD
 elif menu_option == "📊 Metrics Dashboard":
